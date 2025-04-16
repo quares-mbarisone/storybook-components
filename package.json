@@ -1,20 +1,48 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "mbari-custom-components",
+  "private": false,
+  "version": "0.0.1-rc4",
   "type": "module",
+  "keywords": [
+    "react",
+    "dev",
+    "matias",
+    "barisone",
+    "curso"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/quares-mbarisone/storybook-components",
+  "repository": {
+    "url": "https://github.com/quares-mbarisone/storybook-components",
+    "type": "git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^19.0.0 || ^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^19.0.0 || ^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "dev": "npm run storybook",
-    "build": "tsc -b && vite build",
+    "build": "npm run clean && tsc && npm run copyfiles",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_3c93b97b453b64c"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "chromatic": "npx chromatic --project-token=chpt_3c93b97b453b64c",
+    "clean": "rimraf dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
@@ -38,6 +66,9 @@
     "eslint-plugin-storybook": "^0.12.0",
     "globals": "^15.15.0",
     "playwright": "^1.51.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rimraf": "^6.0.1",
     "storybook": "^8.6.12",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
